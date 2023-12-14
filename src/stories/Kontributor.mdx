@@ -1,0 +1,81 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Information/Kontributor" />
+
+<style>
+  {`
+    @font-face {
+    font-family: "Dank Mono";
+    src: url("./assets/fonts/DankMono-Italic.ttf") format("truetype"),
+  }
+
+  .dm-text {
+    font-family: "Dank Mono";
+  }
+
+  @keyframes gradientText {
+    0% {
+      background-position: 50% 0%;
+    }
+    100% {
+      background-position: -50% 0%;
+    }
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, rgba(215,187,245,1) 0%, rgba(160,118,249,1) 20%, rgba(101,40,247,1) 40%, rgba(101,40,247,1) 60%, rgba(139,90,248,1) 80%, rgba(215,187,245,1) 100%);
+    background-size: 500% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientText 4s linear infinite;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+`}
+</style>
+
+export const contributors = [
+  {
+    githubUsername: "adhemukhlis",
+    displayName: "Mukhlis Adhe",
+  },
+];
+
+<div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+  {contributors.map((person, index) => (
+    <div
+      key={index}
+      style={{
+        width: "12rem",
+        backgroundColor: "#F0F0F0",
+        padding: "1rem",
+        borderRadius: "1rem",
+
+      }}
+    >
+
+      <a
+        href={`https://github.com/${person.githubUsername}`}
+        target="_blank"
+        style={{
+          textDecoration: "none",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem"
+        }}
+      >
+      <img
+        src={`https://github.com/${person.githubUsername}.png?size=80`}
+        alt={`${person.githubUsername}-profile`}
+        style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+      />
+        <div className="dm-text gradient-text">{person.displayName}</div>
+      </a>
+    </div>
+
+))}
+
+</div>
