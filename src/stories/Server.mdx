@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+import SS1 from './assets/server/ss1.png';
+import SS2 from './assets/server/ss2.png';
+import SS3 from './assets/server/ss3.png';
+import SS4 from './assets/server/ss4.png';
+import SS6 from './assets/server/ss4.png';
+
+<Meta title="Information/Server/cara masuk SSH" />
+
+# Cara masuk SSH
+>ada baiknya pahami dahulu sebelum mencoba
+
+## Perintah membuat file SSH Key
+1. buka cmd/terminal lau masukan perintah seperti pada gambar
+<img src={SS1} width="540px" alt="s1" />
+```bash
+ssh-keygen -t rsa
+```
+
+2. Tentukan nama dari file SSH KEY, dan passphrase, lalu masukan passphrase yang sama sebagai konfirmasi
+<img src={SS2} width="540px" alt="s2" />
+> pada contoh gambar diatas menggunakan nama file `ragha`, dan passphrase `kucingku`, tentukan bebas sesuai keinginan!
+
+3. hasil proses membuat file SSH Key
+<img src={SS3} width="540px" alt="s3" />
+
+4. buka halaman `~/.ssh`, file SSH Key yang telah terbuat yaitu `ragha.pub`
+<img src={SS4} width="540px" alt="s3" />
+> pada contoh gambar diatas menggunakan nama file `ragha`, nama file sesuai dengan penamaan yang diberikan pada step ke-2
+
+
+## Memberikan file SSH Key ke bagian yang memiliki wewenang mengakses server (DevOps)
+1. Biasanya untuk tahap konfigurasi file SSH Key supaya kita dapat masuk ke server, admin server akan memasukan file pub ke dalam server tujuan
+
+## SSH Username dan Address
+1. selanjutnya admin server akan memberitahu username dan address sebagai informasi yang digunakan untuk mengakses server
+2. misal username : `ragha-frontend`, address : `103.80.11.164`, dan password : `semisal-password`
+
+## Mengakses Server
+1. buka cmd/terminal
+``` bash 
+ssh ragha-frontend@103.80.11.164
+```
+2. jika membutuhkan password masukan password `semisal-password` sesuai password yang telah diberikan 
+> `semisal-password` hanyalah contoh password
+3. selanjutnya akan diminta memasukan passphrase sesuai file SSH Key yang diberikan ke admin server
+>sebagai contoh passphrase `kucingku` berdasarkan dari dokumentasi ini 
+4. setelah itu terminal baru dapat mengakses terminal server
+
+
+
+
