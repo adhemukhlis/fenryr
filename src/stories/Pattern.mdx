@@ -1,0 +1,94 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Pattern/Pattern" />
+# Pattern
+## nama file dan directory
+  > PascalCase & kebab-case
+## nama komponen
+  > PascalCase
+## enum
+  > UPPER_SNAKE
+  - const STATUS_PAYMENT = `"PENDING" | "PAID" | "UNPAID" | "EXPIRED"`
+## fungsi
+  > camelCase
+  - getDataPayment
+  - arrow function => const handleSubmit = async(values) => \{\}
+  - http request function
+    > nama fungsi `method+representasi_url_API`
+    ```js
+    const getDataPayment = async () =>
+      await axios
+        .request({
+          method: 'GET',
+          url: 'https://hehe.com/payment',
+          params: {
+            data1: ""
+          }
+        })
+    ```
+## nama props
+  > camelCase
+  ```jsx
+  <Table dataSource={[]} withMessage={true} />
+  ```
+## struktur project
+  1. `enums` => folder yang berisi file enum yang digunakan pada project
+  2. `utils` => folder yang berisi reusable function
+  3. `components` => folder yang berisi reusable component
+  4. `styles` => folder yang berisi style file seperti `".css" | ".scss" | ".less"`
+## transform variable
+  > camelCase
+  - pengubahan bentuk variable ke bentuk lainnya
+    > `transformed+nama_variable`
+      ```jsx
+      const DATA_PROVINSI = ["JAWA", "JAKARTA", "PAPUA"]
+      const transformedDataProvinsi = DATA_PROVINSI
+        .map((item, index)=>
+          ({
+            key:index,
+            title:item,
+            value:item
+          })
+        )
+      ```
+## safe map
+  > pengaman disaat suatu nilai tidak pasti array dengan ekspetasi array
+  - menggunakan [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+    ```jsx
+    const res = await axios.request({...})
+
+    const ProductCard = () => (res?.data?.data || []).map(item=><div>{JSON.stringify(item)}</div>)
+    ```
+## format isi file komponen
+  > struktur isi file komponen `.jsx`
+    ```tsx
+    // property dan dependent variable
+    /**
+      items as Array
+      name as string
+      id as string
+    */
+    // +++++++
+
+    // import
+    import { Typography } from "antd"
+    // +++++++
+
+    // destruktur komponen
+    const { Title } = Typography
+    // +++++++
+
+    // komponen
+    const AppPage = () => {
+      return <></>
+    }
+    export default AppPage
+    // +++++++
+
+    // independent variable / fungsi / type
+    const STATUS_PAYMENT = "PENDING"
+    const formatedDate = (str) => dayjs(str).format("YYYY-MMM-DD")
+    type AppProps = {
+      items : string[]
+    }
+    ```
