@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="HowTo/Server/menampilkan listen port" />
+
+# Menampilkan Listen PORT
+
+## menampilkan semua listen port
+```bash
+sudo lsof -i -P | grep LISTEN
+```
+
+## menampilkan listen port spesifik `3000`
+```bash
+sudo lsof -i -P | grep LISTEN | grep :3000
+```
+
+## matikan aplikasi yang menggunakan port spesifik `3000`
+  1. kill menggunakan `<APP_ID>`
+      ```bash
+      kill -9 <APP_ID>
+      ```
+      > `<APP_ID>` terdapat pada kolom kedua dari output [menampilkan semua listen port](#menampilkan-semua-listen-port)
+  2. kill menggunakan port spesifik `3000`
+      ```bash
+      kill -9 $(lsof -t -i:3000)
+      ```
+
