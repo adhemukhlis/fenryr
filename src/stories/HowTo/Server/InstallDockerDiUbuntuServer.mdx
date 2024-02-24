@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="HowTo/Server/install docker di ubuntu server" />
+
+# Install Docker di Ubuntu Server
+
+## 1
+
+```bash
+sudo apt update
+```
+
+## 2
+
+```bash
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
+
+## 3
+
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+
+## 4
+
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+```
+
+## 5
+
+```bash
+apt-cache policy docker-ce
+```
+
+## 6 cek versi docker
+
+```bash
+docker --version
+```
